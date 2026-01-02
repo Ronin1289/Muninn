@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huginn - Tasks Manager</title>
+    <meta name="description" content="A modern, elegant interface for managing your tasks">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">
+                <img src="HUGINN.png" alt="Huginn" class="logo-icon">
+                <h1>Huginn - Tasks</h1>
+            </a>
+            <div style="display: flex; gap: var(--spacing-sm);">
+                <a href="ideas.html" class="nav-btn">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Ideas
+                </a>
+                <a href="projects.html" class="nav-btn">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Projects
+                </a>
+            </div>
+        </div>
+
+        <div class="config-panel" id="configPanel">
+            <h2>Huginn - Database Configuration</h2>
+            <div class="config-form">
+                <div class="input-group">
+                    <label for="supabaseUrl">Supabase URL</label>
+                    <input type="text" id="supabaseUrl" placeholder="https://your-project.supabase.co" />
+                </div>
+                <div class="input-group">
+                    <label for="supabaseKey">Anon Key</label>
+                    <input type="password" id="supabaseKey" placeholder="Your anon/public key" />
+                </div>
+                <button class="btn btn-primary" id="connectBtn">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 11L12 6L7 11M12 18V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    Connect to Database
+                </button>
+            </div>
+        </div>
+
+        <div class="main-panel" id="mainPanel" style="display: none;">
+            <div class="add-section">
+                <div class="input-wrapper">
+                    <input type="text" id="entryInput" placeholder="Enter new content..." />
+                    <button class="btn btn-add" id="addBtn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        Add Entry
+                    </button>
+                </div>
+            </div>
+
+            <div class="list-container">
+                <div class="list-header">
+                    <h3>Database Entries</h3>
+                    <span class="entry-count" id="entryCount">0 entries</span>
+                </div>
+                <div class="list-content" id="listContent">
+                    <div class="empty-state">
+                        <svg class="empty-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9 11L12 14L22 4M21 12V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V5C3 3.9 3.9 3 5 3H16"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <p>No entries yet</p>
+                        <span>Add your first entry to get started</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="notification" id="notification"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
